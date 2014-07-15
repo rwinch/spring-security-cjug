@@ -27,8 +27,8 @@ import org.springframework.security.access.prepost.PostAuthorize;
  */
 public interface MessageRepository extends CrudRepository<Message, Long> {
 
-    @Query("select m from Message m where m.to.id = " +
-      "?#{principal.id}")
+//    @Query("select m from Message m where m.to.id = " +
+//      "?#{principal.id}")
     Iterable<Message> findAll();
 
     @PostAuthorize("hasPermission(returnObject,'read')")

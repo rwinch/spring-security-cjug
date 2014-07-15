@@ -28,7 +28,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import security.data.SecurityEvaluationContextExtension;
 
-@Configuration
+//@Configuration
 @EnableWebMvcSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig
@@ -38,6 +38,8 @@ public class WebSecurityConfig
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+            .csrf().disable()
+            .headers().disable()
             .authorizeRequests()
                 .antMatchers("/resources/**", "/signup").permitAll()
                 .anyRequest().authenticated()
